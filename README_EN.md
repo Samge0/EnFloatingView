@@ -55,7 +55,14 @@ But we have our own rules:
 1.gralde dependencies
 
    ```java
+
+        repositories {
+           jcenter()
+           maven { url "https://dl.bintray.com/samge720/libs" }
+        }
+
        compile 'com.samge.libs:floatingview:1.0.0'
+
    ```
    
 

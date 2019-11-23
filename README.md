@@ -55,8 +55,16 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 ### 使用规则
 
 1.在gralde的dependencies中加入
+
    ```java
+
+        repositories {
+           jcenter()
+           maven { url "https://dl.bintray.com/samge720/libs" }
+        }
+
        compile 'com.samge.libs:floatingview:1.0.0'
+
    ```
    
    
