@@ -70,9 +70,28 @@ public class FloatingView implements IFloatingView {
         }
     }
 
+    private void ensureMiniPlayer(Context context,MagnetViewListener magnetViewListener) {
+        synchronized (this) {
+            if (mEnFloatingView != null) {
+                return;
+            }
+            mEnFloatingView = new EnFloatingView(context.getApplicationContext());
+            if(magnetViewListener!=null){
+                mEnFloatingView.setMagnetViewListener(magnetViewListener);
+            }
+            mEnFloatingView.setLayoutParams(getParams());
+            addViewToWindow(mEnFloatingView);
+        }
+    }
+
     @Override
     public FloatingView add() {
         ensureMiniPlayer(EnContext.get());
+        return this;
+    }
+
+    public FloatingView add(MagnetViewListener magnetViewListener) {
+        ensureMiniPlayer(EnContext.get(),magnetViewListener);
         return this;
     }
 
@@ -122,6 +141,13 @@ public class FloatingView implements IFloatingView {
     }
 
     public FloatingView icon(@DrawableRes int resId) {
+        if (mEnFloatingView != null) {
+            mEnFloatingView.setIconImage(resId);
+        }
+        return this;
+    }
+
+    public FloatingView icon(String resId) {
         if (mEnFloatingView != null) {
             mEnFloatingView.setIconImage(resId);
         }

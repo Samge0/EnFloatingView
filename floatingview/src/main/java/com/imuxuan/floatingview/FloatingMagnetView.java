@@ -24,7 +24,7 @@ public class FloatingMagnetView extends FrameLayout {
     private float mOriginalRawY;
     private float mOriginalX;
     private float mOriginalY;
-    private MagnetViewListener mMagnetViewListener;
+    protected MagnetViewListener mMagnetViewListener;
     private static final int TOUCH_TIME_THRESHOLD = 150;
     private long mLastTouchDownTime;
     protected MoveAnimator mMoveAnimator;

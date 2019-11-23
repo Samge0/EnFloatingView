@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion 16
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -20,8 +21,27 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.imuxuan:floatingview:1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 }
 
-apply from: '../bintray.gradle'
+publish {
+    //bintrayUser = ''               // 登陆账号
+    repoName = 'libs'               // Repositories名，默认为"maven"
+    userOrg = 'samge720'            // bintray.com/用户名
+    groupId = 'com.samge.libs'   // 项目的包名
+    artifactId = 'floatingview'          // 上传到bintray里的Package Name(这里填什么就显示什么)
+    publishVersion = '1.0.0'  // 版本号(这里填什么就显示什么)
+    desc = '应用内悬浮窗，无需一切权限，适配所有ROM和厂商，no permission floating view.'
+    website = 'https://github.com/Samge0/EnFloatingView'
+}
+
+task javadoc(type: Javadoc) {
+    options.encoding = "utf-8"
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
