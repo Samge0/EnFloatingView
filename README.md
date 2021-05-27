@@ -1,3 +1,7 @@
+本项目版本：
+[![](https://jitpack.io/v/Samge0/EnFloatingView.svg)](https://jitpack.io/#Samge0/EnFloatingView)
+
+源项目版本：
 ![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)
 
 EnFloatingView
